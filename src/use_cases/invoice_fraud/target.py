@@ -1,0 +1,1 @@
+"""Invoice fraud target construction."""
