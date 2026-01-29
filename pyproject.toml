@@ -1,0 +1,29 @@
+[project]
+name = "ml-in-production-risk"
+version = "0.1.0"
+description = "ML in Production with Risk Engineering Use Cases"
+requires-python = ">=3.9"
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24",
+  "scikit-learn>=1.3",
+  "pydantic>=2.0",
+  "pyyaml>=6.0",
+  "joblib>=1.3",
+  "fastapi>=0.110",
+  "uvicorn>=0.29",
+  "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "black>=24.0",
+  "ruff>=0.3",
+  "mypy>=1.9",
+  "pre-commit>=3.7",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
