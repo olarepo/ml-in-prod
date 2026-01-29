@@ -1,1 +1,6 @@
-# Base config
+project:
+  name: ml-in-production-risk
+  environment: local
+
+logging:
+  level: INFO
