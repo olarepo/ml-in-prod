@@ -1,0 +1,1 @@
+# Marks training as a package
