@@ -1,5 +1,3 @@
-# src/platform/training/base_trainer.py
-
 from typing import List, Dict, Type
 from collections import Counter
 import numpy as np
@@ -10,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 from src.platform.common.validation import validate_records
+
+from src.platform.model_registry.registry import ModelRegistry
 
 from src.platform.common.logging_config import get_logger
 
@@ -69,7 +69,8 @@ class BaseTrainer:
             "recall": recall_score(y_test, predictions, zero_division=0),
         }
 
-        joblib.dump(model, self.model_output_path)
+        registry = ModelRegistry()
+        registry.register_model(self.model_output_path, model)
 
         self._log_metrics(metrics)
 

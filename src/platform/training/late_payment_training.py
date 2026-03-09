@@ -3,14 +3,14 @@ from src.platform.common.schema import LatePaymentRecord
 from src.platform.features.late_payment_features import build_late_payment_features
 
 
-MODEL_OUTPUT_PATH = "models/late_payment_model.joblib"
+MODEL_NAME = "late_payment_model"
 
 
 def train_late_payment_model(records):
     trainer = BaseTrainer(
         schema_class=LatePaymentRecord,
         feature_builder=build_late_payment_features,
-        model_output_path=MODEL_OUTPUT_PATH,
+        model_output_path=MODEL_NAME,
     )
 
     return trainer.train(records)

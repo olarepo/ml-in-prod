@@ -2,6 +2,8 @@ from typing import List, Dict, Type
 import numpy as np
 import joblib
 
+from src.platform.model_registry.registry import ModelRegistry
+
 from src.platform.common.validation import validate_records
 
 from src.platform.common.logging_config import get_logger
@@ -28,8 +30,8 @@ class BaseServer:
         self.probability_field = probability_field
 
     def _load_model(self):
-        logger.info(f"Loading model from {self.model_path}")
-        return joblib.load(self.model_path)
+        registry = ModelRegistry()
+        return registry.load_latest_model(self.model_path)
 
     def predict(self, records: List[dict]) -> List[Dict]:
         logger.info(f"Received {len(records)} records for prediction")
