@@ -4,6 +4,9 @@ import joblib
 
 from src.platform.common.validation import validate_records
 
+from src.platform.common.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 class BaseServer:
     """
@@ -25,9 +28,11 @@ class BaseServer:
         self.probability_field = probability_field
 
     def _load_model(self):
+        logger.info(f"Loading model from {self.model_path}")
         return joblib.load(self.model_path)
 
     def predict(self, records: List[dict]) -> List[Dict]:
+        logger.info(f"Received {len(records)} records for prediction")
 
         validated = validate_records(records, self.schema_class)
 
@@ -38,6 +43,8 @@ class BaseServer:
 
         probabilities = model.predict_proba(X)[:, 1]
         predictions = model.predict(X)
+
+        logger.info("Prediction completed")
 
         results = []
 

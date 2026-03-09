@@ -11,6 +11,9 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 from src.platform.common.validation import validate_records
 
+from src.platform.common.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 class BaseTrainer:
     """
@@ -68,12 +71,12 @@ class BaseTrainer:
 
         joblib.dump(model, self.model_output_path)
 
-        self._print_metrics(metrics)
+        self._log_metrics(metrics)
 
         return metrics
 
-    def _print_metrics(self, metrics: Dict[str, float]):
-        print("Model Metrics:")
+    def _log_metrics(self, metrics: Dict[str, float]):
+        logger.info("Training completed")
         for k, v in metrics.items():
-            print(f"{k}: {v:.4f}")
-        print(f"\nModel saved to {self.model_output_path}")
+            logger.info(f"{k}: {v:.4f}")
+        logger.info(f"Model saved to {self.model_output_path}")
