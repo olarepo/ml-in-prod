@@ -2,13 +2,8 @@
   "churn_model": [
     {
       "version": 1,
-      "path": "models\\churn_model_v1.joblib",
-      "created_at": "2026-03-09T16:10:48.101456"
-    },
-    {
-      "version": 2,
-      "path": "models\\churn_model_v2.joblib",
-      "created_at": "2026-03-09T16:11:46.811121"
+      "path": "models/churn_model_v1.joblib",
+      "created_at": "2026-03-09T17:11:00.471147"
     }
   ]
 }
