@@ -3,14 +3,14 @@ from src.platform.common.fraud_schema import InvoiceFraudRecord
 from src.platform.features.invoice_fraud_features import build_invoice_fraud_features
 
 
-MODEL_PATH = "models/invoice_fraud_model.joblib"
+MODEL_NAME = "invoice_fraud_model"
 
 
 def predict_invoice_fraud(records):
     server = BaseServer(
         schema_class=InvoiceFraudRecord,
         feature_builder=build_invoice_fraud_features,
-        model_path=MODEL_PATH,
+        model_path=MODEL_NAME,
         id_field="invoice_id",
         probability_field="fraud_probability",
     )

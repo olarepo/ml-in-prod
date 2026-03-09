@@ -3,14 +3,14 @@ from src.platform.common.churn_schema import ChurnRecord
 from src.platform.features.churn_features import build_churn_features
 
 
-MODEL_PATH = "models/churn_model.joblib"
+MODEL_NAME = "churn_model"
 
 
 def predict_churn(records):
     server = BaseServer(
         schema_class=ChurnRecord,
         feature_builder=build_churn_features,
-        model_path=MODEL_PATH,
+        model_path=MODEL_NAME,
         id_field="customer_id",
         probability_field="churn_probability",
     )
