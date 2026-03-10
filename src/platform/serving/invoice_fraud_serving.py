@@ -20,5 +20,5 @@ class FraudServer:
 
 server = FraudServer()
 
-def predict_fraud(records):
+def predict_invoice_fraud(records):
     return server.predict(records)
