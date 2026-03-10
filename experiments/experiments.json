@@ -24,5 +24,31 @@
       "recall": 1.0
     },
     "timestamp": "2026-03-10T13:56:23.800573"
+  },
+  {
+    "experiment_id": 2,
+    "model": "churn_model",
+    "params": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 100,
+      "n_jobs": null,
+      "penalty": "deprecated",
+      "random_state": 42,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "metrics": {
+      "accuracy": 0.5,
+      "precision": 0.5,
+      "recall": 1.0
+    },
+    "timestamp": "2026-03-10T17:40:34.583447"
   }
 ]
