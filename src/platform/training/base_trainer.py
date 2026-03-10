@@ -11,6 +11,8 @@ from src.platform.common.validation import validate_records
 
 from src.platform.model_registry.registry import ModelRegistry
 
+from src.platform.experiments.experiment_tracker import ExperimentTracker
+
 from src.platform.common.logging_config import get_logger
 
 logger = get_logger(__name__)
@@ -27,6 +29,7 @@ class BaseTrainer:
         self.schema_class = schema_class
         self.feature_builder = feature_builder
         self.model_output_path = model_output_path
+        self.model_name = model_output_path
 
     def _validate_dataset(self, y: np.ndarray):
         class_counts = Counter(y)
@@ -68,6 +71,14 @@ class BaseTrainer:
             "precision": precision_score(y_test, predictions, zero_division=0),
             "recall": recall_score(y_test, predictions, zero_division=0),
         }
+
+        tracker = ExperimentTracker()
+        
+        tracker.log_experiment(
+            model_name=self.model_name,
+            params=model.get_params(),
+            metrics=metrics
+        )
 
         registry = ModelRegistry()
         registry.register_model(self.model_output_path, model)
