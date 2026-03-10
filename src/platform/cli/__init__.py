@@ -44,7 +44,7 @@ def main():
 
     # Experiments
     exp_parser = subparsers.add_parser("experiments")
-    exp_parser.add_argument("subcommand", choices=["list", "best"])
+    exp_parser.add_argument("subcommand", choices=["list", "best", "promote"])
     exp_parser.add_argument("--model", help="Model name")
     exp_parser.add_argument("--metric", default="accuracy", help="Metric for best experiment")
 
