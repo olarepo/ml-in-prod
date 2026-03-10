@@ -1,6 +1,5 @@
 import argparse
 import json
-import sys
 
 from src.platform.training.late_payment_training import train_late_payment_model
 from src.platform.training.invoice_fraud_training import train_invoice_fraud_model
@@ -31,23 +30,49 @@ def load_json_file(path):
 
 def main():
     parser = argparse.ArgumentParser(description="Risk ML Platform CLI")
+    subparsers = parser.add_subparsers(dest="command", required=True)
 
-    parser.add_argument("action", choices=["train", "serve"])
-    parser.add_argument("model", choices=MODEL_TRAINERS.keys())
-    parser.add_argument("input_file", help="Path to JSON input file")
+    # Train
+    train_parser = subparsers.add_parser("train")
+    train_parser.add_argument("model", choices=MODEL_TRAINERS.keys())
+    train_parser.add_argument("input_file", help="Path to JSON input file")
+
+    # Serve
+    serve_parser = subparsers.add_parser("serve")
+    serve_parser.add_argument("model", choices=MODEL_SERVERS.keys())
+    serve_parser.add_argument("input_file", help="Path to JSON input file")
+
+    # Experiments
+    exp_parser = subparsers.add_parser("experiments")
+    exp_parser.add_argument("subcommand", choices=["list", "best"])
+    exp_parser.add_argument("--model", help="Model name")
+    exp_parser.add_argument("--metric", default="accuracy", help="Metric for best experiment")
 
     args = parser.parse_args()
 
-    if args.action == "train":
+    if args.command == "train":
         trainer = MODEL_TRAINERS[args.model]
         data = load_json_file(args.input_file)
         trainer(data)
 
-    elif args.action == "serve":
+    elif args.command == "serve":
         server = MODEL_SERVERS[args.model]
         data = load_json_file(args.input_file)
         results = server(data)
         print(json.dumps(results, indent=2))
+
+    elif args.command == "experiments":
+        # Local import to avoid circular import
+        from src.platform.cli import experiments as exp_cli
+        import sys
+
+        sys.argv = ["experiments.py", args.subcommand]
+        if args.model:
+            sys.argv += ["--model", args.model]
+        if args.metric:
+            sys.argv += ["--metric", args.metric]
+
+        exp_cli.main()
 
 
 if __name__ == "__main__":
