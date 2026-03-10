@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN mkdir -p models
 
 # Default command
-ENTRYPOINT ["python", "-m", "src.platform.cli"]
+CMD ["uvicorn", "src.platform.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
