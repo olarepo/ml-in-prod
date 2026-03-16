@@ -14,6 +14,11 @@
       "version": 3,
       "path": "models\\churn_model_v3.joblib",
       "created_at": "2026-03-10T17:40:34.590837"
+    },
+    {
+      "version": 4,
+      "path": "models\\churn_model_v4.joblib",
+      "created_at": "2026-03-16T11:53:25.023120"
     }
   ]
 }
