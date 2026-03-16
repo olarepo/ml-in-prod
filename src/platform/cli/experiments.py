@@ -2,8 +2,7 @@ import json
 from pathlib import Path
 import argparse
 
-from src.platform.model_registry.promoter import best_experiment_for_model
-
+from src.platform.model_registry.promoter import promote_best_model
 
 EXPERIMENT_FILE = Path("experiments/experiments.json")
 
@@ -41,18 +40,17 @@ def best_experiment(model_name, metric="accuracy"):
 
 def promote_model(model_name, metric="accuracy"):
 
-    best = best_experiment_for_model(model_name, metric)
+    result = promote_best_model(model_name, metric)
 
-    if not best:
+    if not result:
         print(f"No experiments found for model '{model_name}'")
         return
 
     print(
-        f"Promoting experiment {best['experiment_id']} "
-        f"with {metric}={best['metrics'].get(metric)}"
+        f"Experiment {result['experiment_id']} promoted "
+        f"as model version {result['version']} "
+        f"(metric={result['metric']})"
     )
-
-    print("Model promotion simulated (registry integration next)")
 
 def main():
     parser = argparse.ArgumentParser(description="Experiment CLI")
