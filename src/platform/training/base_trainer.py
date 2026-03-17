@@ -54,11 +54,11 @@ class BaseTrainer:
         self._validate_dataset(y)
 
         X_train, X_test, y_train, y_test = train_test_split(
-            X,
-            y,
-            test_size=self.TEST_SIZE,
-            random_state=self.RANDOM_STATE,
-            stratify=y,
+        X,
+        y,
+        test_size=self.TEST_SIZE,
+        random_state=self.RANDOM_STATE,
+        stratify=y,
         )
 
         model = LogisticRegression(random_state=self.RANDOM_STATE)
@@ -72,17 +72,25 @@ class BaseTrainer:
             "recall": recall_score(y_test, predictions, zero_division=0),
         }
 
+        # ✅ 1. Track experiment
         tracker = ExperimentTracker()
-        
         tracker.log_experiment(
             model_name=self.model_name,
             params=model.get_params(),
             metrics=metrics
         )
 
-        registry = ModelRegistry()
-        registry.register_model(self.model_output_path, model)
+        # ✅ 2. Save model artifact (NOT registry)
+        from pathlib import Path
+        MODEL_DIR = Path("artifacts")
+        MODEL_DIR.mkdir(exist_ok=True)
 
+        model_path = MODEL_DIR / f"{self.model_output_path}.joblib"
+        joblib.dump(model, model_path)
+
+        logger.info(f"Model artifact saved to {model_path}")
+
+        # ✅ 3. Log metrics
         self._log_metrics(metrics)
 
         return metrics

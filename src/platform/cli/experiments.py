@@ -46,10 +46,13 @@ def promote_model(model_name, metric="accuracy"):
         print(f"No experiments found for model '{model_name}'")
         return
 
+    experiment = result["experiment"]
+    registry_entry = result["registry_entry"]
+
     print(
-        f"Experiment {result['experiment_id']} promoted "
-        f"as model version {result['version']} "
-        f"(metric={result['metric']})"
+        f"Experiment {experiment['experiment_id']} promoted "
+        f"as model version {registry_entry['version']} "
+        f"(metric={experiment['metrics'].get(metric)})"
     )
 
 def main():

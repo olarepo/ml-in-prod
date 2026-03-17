@@ -1,0 +1,82 @@
+[
+  {
+    "customer_id": "CUST-001",
+    "invoice_amount": 200.50,
+    "days_late": 5,
+    "country": "UK",
+    "is_repeat_customer": true,
+    "label": 0
+  },
+  {
+    "customer_id": "CUST-002",
+    "invoice_amount": 1500.00,
+    "days_late": 30,
+    "country": "US",
+    "is_repeat_customer": false,
+    "label": 1
+  },
+  {
+    "customer_id": "CUST-003",
+    "invoice_amount": 320.75,
+    "days_late": 10,
+    "country": "DE",
+    "is_repeat_customer": true,
+    "label": 0
+  },
+  {
+    "customer_id": "CUST-004",
+    "invoice_amount": 4800.00,
+    "days_late": 45,
+    "country": "IN",
+    "is_repeat_customer": false,
+    "label": 1
+  },
+  {
+    "customer_id": "CUST-005",
+    "invoice_amount": 150.00,
+    "days_late": 3,
+    "country": "FR",
+    "is_repeat_customer": true,
+    "label": 0
+  },
+  {
+    "customer_id": "CUST-006",
+    "invoice_amount": 2750.25,
+    "days_late": 60,
+    "country": "BR",
+    "is_repeat_customer": false,
+    "label": 1
+  },
+  {
+    "customer_id": "CUST-007",
+    "invoice_amount": 890.40,
+    "days_late": 12,
+    "country": "ES",
+    "is_repeat_customer": true,
+    "label": 0
+  },
+  {
+    "customer_id": "CUST-008",
+    "invoice_amount": 6200.00,
+    "days_late": 50,
+    "country": "CN",
+    "is_repeat_customer": false,
+    "label": 1
+  },
+  {
+    "customer_id": "CUST-009",
+    "invoice_amount": 430.90,
+    "days_late": 8,
+    "country": "IT",
+    "is_repeat_customer": true,
+    "label": 0
+  },
+  {
+    "customer_id": "CUST-010",
+    "invoice_amount": 7100.00,
+    "days_late": 35,
+    "country": "ZA",
+    "is_repeat_customer": false,
+    "label": 1
+  }
+]
