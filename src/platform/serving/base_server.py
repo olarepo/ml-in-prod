@@ -22,16 +22,23 @@ class BaseServer:
         model_path: str,
         id_field: str,
         probability_field: str,
+        version=None,
     ):
         self.schema_class = schema_class
         self.feature_builder = feature_builder
         self.model_path = model_path
         self.id_field = id_field
         self.probability_field = probability_field
+        self.version = version
 
     def _load_model(self):
         registry = ModelRegistry()
+
+        if self.version is not None:
+            return registry.load_model_version(self.model_path, self.version)
+
         return registry.load_latest_model(self.model_path)
+        
 
     def predict(self, records: List[dict]) -> List[Dict]:
         logger.info(f"Received {len(records)} records for prediction")

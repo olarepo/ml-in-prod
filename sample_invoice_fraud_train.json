@@ -1,0 +1,92 @@
+[
+  {
+    "invoice_id": "INV-2001",
+    "vendor_id": "VEND-101",
+    "invoice_amount": 150.25,
+    "invoice_age_days": 10,
+    "country": "UK",
+    "is_new_vendor": false,
+    "label": 0
+  },
+  {
+    "invoice_id": "INV-2002",
+    "vendor_id": "VEND-102",
+    "invoice_amount": 12000.00,
+    "invoice_age_days": 1,
+    "country": "US",
+    "is_new_vendor": true,
+    "label": 1
+  },
+  {
+    "invoice_id": "INV-2003",
+    "vendor_id": "VEND-103",
+    "invoice_amount": 540.80,
+    "invoice_age_days": 20,
+    "country": "DE",
+    "is_new_vendor": false,
+    "label": 0
+  },
+  {
+    "invoice_id": "INV-2004",
+    "vendor_id": "VEND-104",
+    "invoice_amount": 8700.00,
+    "invoice_age_days": 2,
+    "country": "CN",
+    "is_new_vendor": true,
+    "label": 1
+  },
+  {
+    "invoice_id": "INV-2005",
+    "vendor_id": "VEND-105",
+    "invoice_amount": 320.00,
+    "invoice_age_days": 25,
+    "country": "FR",
+    "is_new_vendor": false,
+    "label": 0
+  },
+  {
+    "invoice_id": "INV-2006",
+    "vendor_id": "VEND-106",
+    "invoice_amount": 9500.50,
+    "invoice_age_days": 3,
+    "country": "IN",
+    "is_new_vendor": true,
+    "label": 1
+  },
+  {
+    "invoice_id": "INV-2007",
+    "vendor_id": "VEND-107",
+    "invoice_amount": 210.75,
+    "invoice_age_days": 18,
+    "country": "ES",
+    "is_new_vendor": false,
+    "label": 0
+  },
+  {
+    "invoice_id": "INV-2008",
+    "vendor_id": "VEND-108",
+    "invoice_amount": 14300.00,
+    "invoice_age_days": 1,
+    "country": "RU",
+    "is_new_vendor": true,
+    "label": 1
+  },
+  {
+    "invoice_id": "INV-2009",
+    "vendor_id": "VEND-109",
+    "invoice_amount": 670.40,
+    "invoice_age_days": 12,
+    "country": "IT",
+    "is_new_vendor": false,
+    "label": 0
+  },
+  {
+    "invoice_id": "INV-2010",
+    "vendor_id": "VEND-110",
+    "invoice_amount": 11000.00,
+    "invoice_age_days": 4,
+    "country": "BR",
+    "is_new_vendor": true,
+    "label": 1
+  }
+]

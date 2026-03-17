@@ -55,3 +55,25 @@ class ModelRegistry:
         logger.info(f"Loading model {model_name} version {latest['version']}")
 
         return joblib.load(latest["path"])
+    
+    def load_model_version(self, model_name, version):
+
+        registry = load_registry()
+
+        if model_name not in registry:
+            raise ValueError(f"No models registered for {model_name}")
+
+        versions = registry[model_name]
+
+        for v in versions:
+            if v["version"] == version:
+
+                logger.info(
+                    f"Loading model {model_name} version {version}"
+                )
+
+                return joblib.load(v["path"])
+
+        raise ValueError(
+            f"Version {version} not found for model {model_name}"
+        )
