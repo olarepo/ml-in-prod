@@ -7,6 +7,7 @@ from src.platform.model_registry.registry import ModelRegistry
 from src.platform.common.validation import validate_records
 
 from src.platform.common.logging_config import get_logger
+from src.platform.monitoring.prediction_logger import log_predictions
 
 logger = get_logger(__name__)
 
@@ -64,4 +65,11 @@ class BaseServer:
                 "predicted_label": int(pred),
             })
 
+        # Log predictions
+        log_predictions(
+            model_name=self.model_path,
+            version=self.version or "latest",
+            inputs=records,
+            outputs=results
+        )
         return results
