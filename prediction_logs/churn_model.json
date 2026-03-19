@@ -1,0 +1,24 @@
+[
+  {
+    "timestamp": "2026-03-19T19:29:30.888366",
+    "model": "churn_model",
+    "version": "latest",
+    "inputs": [
+      {
+        "customer_id": "C1",
+        "tenure_months": 3,
+        "monthly_spend": 50,
+        "support_tickets_last_3m": 6,
+        "is_active_user": false,
+        "label": 1
+      }
+    ],
+    "outputs": [
+      {
+        "customer_id": "C1",
+        "churn_probability": 0.9993708301711308,
+        "predicted_label": 1
+      }
+    ]
+  }
+]
