@@ -28,7 +28,7 @@ class ModelRegistry:
 
         metadata = {
             "version": new_version,
-            "path": str(model_path),
+            "path": model_path.as_posix(),
             "created_at": datetime.utcnow().isoformat()
         }
 
